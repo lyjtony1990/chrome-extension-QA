@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "AutoRep",
+  "version": "1.0.0",
+  "description": "AutoRep",
+  "web_accessible_resources": [
+    {
+      "resources": ["images/power.png", "images/rf.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["assets/js/jquery.min.js", "content-script.js"],
+      "css": ["content-script.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "tabs",
+    "unlimitedStorage",
+    "notifications",
+    "clipboardWrite",
+    "contextMenus",
+    "sidePanel"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": ["https://fonts.googleapis.com/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  }
+
+}
